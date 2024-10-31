@@ -1,11 +1,13 @@
 package mergedocx;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.docx4j.Docx4J;
 import org.docx4j.dml.CTBlip;
 import org.docx4j.model.datastorage.migration.VariablePrepare;
 import org.docx4j.model.structure.SectionWrapper;
@@ -115,10 +117,16 @@ public class MergeDocx {
 			pkgTarget.save(out);
 			logger.info("Merged document saved to " + outputfilepath);
 
-		} catch (
+			File pdf = new File(out.getParentFile(), "merged.pdf");
 
-		Exception e) {
+			WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(out);
+
+			FileOutputStream outputStream = new FileOutputStream(pdf);
+			Docx4J.toPDF(wordMLPackage, outputStream);
+
+		} catch (Exception e) {
 			logger.error("Error merging documents: " + e.getMessage(), e);
 		}
 	}
+
 }

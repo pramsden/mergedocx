@@ -40,6 +40,13 @@
 			<version>1.7.36</version> <!-- Use the latest stable version -->
 		</dependency>
 
+		<dependency>
+			<groupId>org.docx4j</groupId>
+			<artifactId>docx4j-export-fo</artifactId>
+			<version>11.5.0</version> <!-- Use the same version as docx4j -->
+		</dependency>
+
+
 		<!-- Logback Classic -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
